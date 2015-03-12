@@ -1615,7 +1615,7 @@ C Calculate cell short circuit current.
 C Calculate cell open circuit voltage.
        call eclose(fQPnl,0.0,0.001,close)
        if(.not.close)then
-          fVoc=fVocRef/iScell*(1.-fGamma*(fTPnl-fTref))*
+          fVoc=fVocRef/iScell*(1.+fGamma*(fTPnl-fTref))*
      &           MAX(0.,(1.+fBeta*log(fQPnl/fQref)))
        else
           fVoc=0.
@@ -1629,7 +1629,7 @@ C the Watsun-PV model assumes that the maximum power point voltage
 C has the same dependancy on cell temperature and incident irradiance
 C as the open circuit voltage.
           fVmp=fVmpRef/float(iScell)*		!- cell value
-     &            (1.-fGamma*(fTPnl-fTref))*
+     &            (1.+fGamma*(fTPnl-fTref))*
      &            max(0.,(1.+fBeta*log((fQPnl+fSmall)/fQref)))
 
 C Calculate the maximum module power.
@@ -1656,7 +1656,7 @@ C short circuit current.
 
 C Calculate voltage at maximum power point.
           fVmp=fVmpRef/iScell*				!- cell value
-     &              (1.-fGamma*(fTPnl-fTref))*
+     &              (1.+fGamma*(fTPnl-fTref))*
      &              max(0.,(1.+fBeta*log(fQPnl/fQref)))
 
 C Calculate the internal series resistance.
