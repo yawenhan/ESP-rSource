@@ -1635,7 +1635,8 @@ C as the open circuit voltage.
 C Calculate the maximum module power.
           fPVPower=fImpRef*fVmpRef*fIsc*fVoc/
      &               (fIscRef*fVocRef)*
-     &               iNPBrch*iSCell*iNPnnls
+     &               iNPBrch*iSCell*iNPnnls*
+     &		     (1.-fMiscLossFactor)
 
 C Calculate the module voltage.
           fPVVoltage=fVmp*iSCell
